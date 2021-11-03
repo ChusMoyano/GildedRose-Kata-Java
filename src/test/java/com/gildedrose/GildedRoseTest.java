@@ -1,49 +1,48 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
+
     @Test
-    void fooTest() {
-        Item[] items = new Item[] { new Item("MacbookPro", 20, 50) };
-        GildedRose app = new GildedRose(items);
-        for (int i=0; i<10; i++) {
-            //After passing 10 days
-            app.updateQuality();
-        }
-        assertEquals("MacbookPro", app.items[0].name);
-        assertEquals(10, app.items[0].sellIn);
-        assertEquals(40, app.items[0].quality);
+    @DisplayName("Aged brie increase quality everyday")
+    void agedBrieIncreaseQualityTest() {
+        Item[] items = new Item[]{new Item("Aged Brie", 5, 0)};
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Aged Brie", gildedRose.items[0].name);
+        assertEquals(1, gildedRose.items[0].quality);
     }
 
 
-   @Test
-   void agedBrieTest() {
-       Item[] items = new Item[] { new Item("Aged Brie", 5, 0) };
-       GildedRose gildedRose = new GildedRose(items);
-       gildedRose.updateQuality();
+    @Test
+    @DisplayName("Quality cannot be negative")
+    void nonNegativeQuality() {
+        Item[] items = new Item[]{new Item("Macbook", 10, 0)};
+        GildedRose gildedRose = new GildedRose(items);
 
-       assertEquals("Aged Brie", gildedRose.items[0].name);
-       assertEquals(4, gildedRose.items[0].sellIn);
-       assertEquals(1, gildedRose.items[0].quality);
-   }
+        gildedRose.updateQuality();
+
+        assertEquals("Macbook", gildedRose.items[0].name);
+        assertEquals(0, gildedRose.items[0].quality);
+    }
+
 
     @Test
-    void negativeQuality() {
-       Item[] items = new Item[] { new Item("Macbook", 10, 2) };
-       GildedRose gildedRose = new GildedRose(items);
+    @DisplayName("Item Quality decrease x2 when sellIn time expires")
+    void itemQualityDoubleDecreaseAfterSellInExpires() {
+        Item[] items = new Item[]{new Item("Thori'dal The Stars Fury", 0, 50)};
+        GildedRose gildedRose = new GildedRose(items);
 
-       //After 5 days
-       for(int i = 0; i < 5; i++) {
-           gildedRose.updateQuality();
-       }
+        gildedRose.updateQuality();
 
-       assertEquals("Macbook", gildedRose.items[0].name);
-       assertEquals(5, gildedRose.items[0].sellIn);
-       assertEquals(0, gildedRose.items[0].quality);
-   }
+        assertEquals("Thori'dal The Stars Fury", gildedRose.items[0].name);
+        assertEquals(48, gildedRose.items[0].quality);
+    }
 
 }
