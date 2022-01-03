@@ -90,4 +90,40 @@ class GildedRoseTest {
         assertEquals("Sulfuras, Hand of Ragnaros", gildedRose.items[0].name);
         assertEquals(80, gildedRose.items[0].quality);
     }
+
+    @Test
+    @DisplayName("backstagePasses decrease quality 10 days")
+    void backstagePassesQualityDecreaseTenDays(){
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20)};
+
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", gildedRose.items[0].name);
+        assertEquals(22, gildedRose.items[0].quality);
+    }
+
+    @Test
+    @DisplayName("Entrada al Backstage decrease quality 5 days")
+    void backstagePassesQualityDecreaseFiveDays(){
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20)};
+
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", gildedRose.items[0].name);
+        assertEquals(23, gildedRose.items[0].quality);
+    }
+
+    @Test
+    @DisplayName("backstagePasses decrease quality 0 days")
+    void backstagePassesQualityDecreaseZeroDays(){
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)};
+
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", gildedRose.items[0].name);
+        assertEquals(0, gildedRose.items[0].quality);
+    }
 }
