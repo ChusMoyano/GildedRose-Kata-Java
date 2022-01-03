@@ -19,6 +19,27 @@ class GildedRoseTest {
         assertEquals(1, gildedRose.items[0].quality);
     }
 
+    @Test
+    @DisplayName("Aged brie increase double quality after sellIn day")
+    void agedBrieDoubleIncreaseQualityTest() {
+        Item[] items = new Item[]{new Item("Aged Brie", 0, 0)};
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Aged Brie", gildedRose.items[0].name);
+        assertEquals(2, gildedRose.items[0].quality);
+    }
+
+    @Test
+    @DisplayName("Quality cannot exceed maximum")
+    void qualityDoNotExceedMax() {
+        Item[] items = new Item[]{new Item("Aged Brie", 10, 50)};
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Aged Brie", gildedRose.items[0].name);
+        assertEquals(50, gildedRose.items[0].quality);
+    }
 
     @Test
     @DisplayName("Quality cannot be negative")
