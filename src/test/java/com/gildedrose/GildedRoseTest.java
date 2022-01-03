@@ -66,4 +66,28 @@ class GildedRoseTest {
         assertEquals(48, gildedRose.items[0].quality);
     }
 
+
+    @Test
+    @DisplayName("Sulfuras does not modify sellIn date")
+    void sulfurasDoesNotModifySellInDate(){
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 5, 80)};
+
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Sulfuras, Hand of Ragnaros", gildedRose.items[0].name);
+        assertEquals(5, gildedRose.items[0].sellIn);
+    }
+
+    @Test
+    @DisplayName("Sulfuras does not decrease quality")
+    void sulfurasDoesNotDecreaseQuality(){
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 5, 80)};
+
+        GildedRose gildedRose = new GildedRose(items);
+        gildedRose.updateQuality();
+
+        assertEquals("Sulfuras, Hand of Ragnaros", gildedRose.items[0].name);
+        assertEquals(80, gildedRose.items[0].quality);
+    }
 }
