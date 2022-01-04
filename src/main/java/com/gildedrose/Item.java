@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class Item {
+public abstract class Item {
 
     public String name;
 
