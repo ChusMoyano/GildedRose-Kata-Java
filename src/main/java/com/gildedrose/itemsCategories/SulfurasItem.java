@@ -8,4 +8,6 @@ public class SulfurasItem extends Item {
         super(name, sellIn, quality);
     }
 
+    @Override
+    public void decreaseSellInDate() {}
 }

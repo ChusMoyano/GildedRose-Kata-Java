@@ -16,7 +16,7 @@ public abstract class Item {
 
     public void modifyQuality() {}
 
-    protected void decreaseSellInDate() {
+    public void decreaseSellInDate() {
         sellIn = sellIn - 1;
     }
 

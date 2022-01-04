@@ -10,7 +10,6 @@ public class AgedBrieItem extends Item {
 
     @Override
     public void modifyQuality(){
-        decreaseSellInDate();
         if (sellIn < 0) {
             quality = quality + 2;
         } else {

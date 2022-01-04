@@ -10,7 +10,6 @@ public class BackstagePassesItem extends Item {
 
     @Override
     public void modifyQuality() {
-        decreaseSellInDate();
         if (sellIn < 0) {
             quality = 0;
         } else {

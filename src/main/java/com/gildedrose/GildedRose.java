@@ -9,6 +9,7 @@ class GildedRose {
 
     public void updateQuality() {
         for(Item i: items) {
+            i.decreaseSellInDate();
             i.modifyQuality();
         }
     }
