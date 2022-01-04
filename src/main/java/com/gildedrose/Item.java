@@ -14,8 +14,14 @@ public class Item {
         this.quality = quality;
     }
 
-   @Override
-   public String toString() {
+    public void modifyQuality() {}
+
+    protected void decreaseSellInDate() {
+        sellIn = sellIn - 1;
+    }
+
+    @Override
+    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }

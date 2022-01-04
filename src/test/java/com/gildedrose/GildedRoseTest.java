@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.itemsCategories.AgedBrieItem;
+import com.gildedrose.itemsCategories.BackstagePassesItem;
+import com.gildedrose.itemsCategories.SulfurasItem;
+import com.gildedrose.itemsCategories.UnspecifiedItem;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +15,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Aged brie increase quality everyday")
     void agedBrieIncreaseQualityTest() {
-        Item[] items = new Item[]{new Item("Aged Brie", 5, 0)};
+        Item[] items = new Item[]{new AgedBrieItem("Aged Brie", 5, 0)};
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
 
@@ -22,7 +26,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Aged brie increase double quality after sellIn day")
     void agedBrieDoubleIncreaseQualityTest() {
-        Item[] items = new Item[]{new Item("Aged Brie", 0, 0)};
+        Item[] items = new Item[]{new AgedBrieItem("Aged Brie", 0, 0)};
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
 
@@ -33,7 +37,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Quality cannot exceed maximum")
     void qualityDoNotExceedMax() {
-        Item[] items = new Item[]{new Item("Aged Brie", 10, 50)};
+        Item[] items = new Item[]{new AgedBrieItem("Aged Brie", 10, 50)};
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
 
@@ -44,7 +48,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Quality cannot be negative")
     void nonNegativeQuality() {
-        Item[] items = new Item[]{new Item("Macbook", 10, 0)};
+        Item[] items = new Item[]{new UnspecifiedItem("Macbook", 10, 0)};
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
@@ -57,7 +61,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Item Quality decrease x2 when sellIn time expires")
     void itemQualityDoubleDecreaseAfterSellInExpires() {
-        Item[] items = new Item[]{new Item("Thori'dal The Stars Fury", 0, 50)};
+        Item[] items = new Item[]{new UnspecifiedItem("Thori'dal The Stars Fury", 0, 50)};
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
@@ -70,7 +74,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Sulfuras does not modify sellIn date")
     void sulfurasDoesNotModifySellInDate(){
-        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 5, 80)};
+        Item[] items = new Item[]{new SulfurasItem("Sulfuras, Hand of Ragnaros", 5, 80)};
 
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
@@ -82,7 +86,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Sulfuras does not decrease quality")
     void sulfurasDoesNotDecreaseQuality(){
-        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 5, 80)};
+        Item[] items = new Item[]{new SulfurasItem("Sulfuras, Hand of Ragnaros", 5, 80)};
 
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
@@ -94,7 +98,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("backstagePasses decrease quality 10 days")
     void backstagePassesQualityDecreaseTenDays(){
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20)};
+        Item[] items = new Item[]{new BackstagePassesItem("Backstage passes to a TAFKAL80ETC concert", 10, 20)};
 
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
@@ -106,7 +110,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Entrada al Backstage decrease quality 5 days")
     void backstagePassesQualityDecreaseFiveDays(){
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20)};
+        Item[] items = new Item[]{new BackstagePassesItem("Backstage passes to a TAFKAL80ETC concert", 5, 20)};
 
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
@@ -118,7 +122,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("backstagePasses decrease quality 0 days")
     void backstagePassesQualityDecreaseZeroDays(){
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20)};
+        Item[] items = new Item[]{new BackstagePassesItem("Backstage passes to a TAFKAL80ETC concert", 0, 20)};
 
         GildedRose gildedRose = new GildedRose(items);
         gildedRose.updateQuality();
