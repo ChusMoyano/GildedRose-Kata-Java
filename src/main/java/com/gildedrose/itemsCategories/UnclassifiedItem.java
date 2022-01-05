@@ -2,9 +2,9 @@ package com.gildedrose.itemsCategories;
 
 import com.gildedrose.Item;
 
-public class UnspecifiedItem extends Item {
+public class UnclassifiedItem extends Item {
 
-    public UnspecifiedItem(String name, int sellIn, int quality) {
+    public UnclassifiedItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 

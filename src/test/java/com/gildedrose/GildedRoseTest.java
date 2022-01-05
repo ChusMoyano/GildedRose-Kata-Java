@@ -3,7 +3,7 @@ package com.gildedrose;
 import com.gildedrose.itemsCategories.AgedBrieItem;
 import com.gildedrose.itemsCategories.BackstagePassesItem;
 import com.gildedrose.itemsCategories.SulfurasItem;
-import com.gildedrose.itemsCategories.UnspecifiedItem;
+import com.gildedrose.itemsCategories.UnclassifiedItem;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,7 +48,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Quality cannot be negative")
     void nonNegativeQuality() {
-        Item[] items = new Item[]{new UnspecifiedItem("Macbook", 10, 0)};
+        Item[] items = new Item[]{new UnclassifiedItem("Macbook", 10, 0)};
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
@@ -61,7 +61,7 @@ class GildedRoseTest {
     @Test
     @DisplayName("Item Quality decrease x2 when sellIn time expires")
     void itemQualityDoubleDecreaseAfterSellInExpires() {
-        Item[] items = new Item[]{new UnspecifiedItem("Thori'dal The Stars Fury", 0, 50)};
+        Item[] items = new Item[]{new UnclassifiedItem("Thori'dal The Stars Fury", 0, 50)};
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
